@@ -4,3 +4,4 @@ logs/*
 .gradle
 .idea
 *.iml
+build/*
