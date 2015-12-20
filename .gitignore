@@ -1,3 +1,6 @@
-/logs/*
+logs/*
+
+#Enviroment files
 .gradle
 .idea
+*.iml
