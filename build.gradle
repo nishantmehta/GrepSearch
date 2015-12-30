@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'groovy'
 
 group 'grep'
 version '1.0-SNAPSHOT'
@@ -23,8 +24,25 @@ dependencies {
             'com.yammer.dropwizard:dropwizard-hibernate:' + dropwizardVersion,
             'com.yammer.dropwizard:dropwizard-migrations:' + dropwizardVersion,
             'com.yammer.dropwizard:dropwizard-auth:' + dropwizardVersion,
-            'org.apache.solr:solr-solrj:3.5.0'
+            'org.apache.solr:solr-solrj:3.5.0',
+            'commons-cli:commons-cli:1.2',
+            'org.codehaus.groovy:groovy-all:2.0.5'
     )
+
+}
+
+task hello << {
+    println "hello world from groovy version ${GroovySystem.version}"
+    task runScript (dependsOn: 'classes', type: JavaExec) {
+        main = 'cli'
+        classpath = sourceSets.main.runtimeClasspath
+    }
+    /*
+    def pathToFolderOfScript = 'scripts/'
+    def gse = new GroovyScriptEngine([pathToFolderOfScript] as String[])
+    gse.run('cli.groovy', new Binding())
+*/
+
 }
 
 // Configure the run task to start the Dropwizard service
