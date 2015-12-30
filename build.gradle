@@ -37,12 +37,6 @@ task hello << {
         main = 'cli'
         classpath = sourceSets.main.runtimeClasspath
     }
-    /*
-    def pathToFolderOfScript = 'scripts/'
-    def gse = new GroovyScriptEngine([pathToFolderOfScript] as String[])
-    gse.run('cli.groovy', new Binding())
-*/
-
 }
 
 // Configure the run task to start the Dropwizard service
