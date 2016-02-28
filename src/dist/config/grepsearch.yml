@@ -2,10 +2,14 @@ solrserver:
    type: solr
    host: localhost
    port: 8983
-   core: wikipedia
+   core: stackoverflow
+
+http:
+  port: 9000
+  adminPort: 9001
 
 logging:
-  level: INFO
+  level: DEBUG
 
   file:
     # If true, write log statements to a file.

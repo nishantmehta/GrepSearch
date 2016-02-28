@@ -1,10 +1,13 @@
 package com.grepsearch;
 
 import com.grepsearch.healthcheck.GrepSearchHealthCheck;
-import com.grepsearch.resource.GrepSearchResource;
+import com.grepsearch.resource.GrepSearchAdmin;
+import com.grepsearch.resource.GrepSearch;
 import com.yammer.dropwizard.Service;
 import com.yammer.dropwizard.config.Bootstrap;
+import com.yammer.dropwizard.assets.AssetsBundle;
 import com.yammer.dropwizard.config.Environment;
+import com.yammer.dropwizard.views.ViewBundle;
 import org.apache.solr.client.solrj.SolrServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +23,8 @@ public class GrepSearchService extends Service<GrepSearchConfiguration> {
 
     @Override
     public void initialize(Bootstrap<GrepSearchConfiguration> bootstrap) {
+        bootstrap.addBundle(new ViewBundle());
+        bootstrap.addBundle(new AssetsBundle());
     }
 
     @Override
@@ -27,6 +32,7 @@ public class GrepSearchService extends Service<GrepSearchConfiguration> {
         Optional<SolrServer> solrServer = configuration.getSolrConfig().getSolrServer();
 
         environment.addHealthCheck(new GrepSearchHealthCheck(configuration.getSolrConfig().getType()));
-        environment.addResource(new GrepSearchResource(solrServer.get()));
+        environment.addResource(new GrepSearch(solrServer.get()));
+        environment.addResource(new GrepSearchAdmin(solrServer.get()));
     }
 }

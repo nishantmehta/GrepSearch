@@ -24,6 +24,7 @@ dependencies {
             'com.yammer.dropwizard:dropwizard-hibernate:' + dropwizardVersion,
             'com.yammer.dropwizard:dropwizard-migrations:' + dropwizardVersion,
             'com.yammer.dropwizard:dropwizard-auth:' + dropwizardVersion,
+            'com.yammer.dropwizard:dropwizard-views:' + dropwizardVersion,
             'org.apache.solr:solr-solrj:3.5.0',
             'commons-cli:commons-cli:1.2',
             'org.codehaus.groovy:groovy-all:2.0.5'
