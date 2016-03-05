@@ -5,12 +5,11 @@ import org.apache.solr.common.SolrDocumentList;
 
 public class SearchView extends View {
     private SolrDocumentList solrDocuments;
+    private long numFound;
 
-    public String getMaker() {
-        return maker;
+    public long getNumFound() {
+        return numFound;
     }
-
-    public String maker = "nishant";
 
     public SearchView(String templateName) {
         super(templateName);
@@ -18,6 +17,7 @@ public class SearchView extends View {
     public SearchView(String templateName, SolrDocumentList solrDocuments) {
         super(templateName);
         this.solrDocuments = solrDocuments;
+        numFound = solrDocuments.getNumFound();
     }
 
     public SolrDocumentList getSolrDocuments() {

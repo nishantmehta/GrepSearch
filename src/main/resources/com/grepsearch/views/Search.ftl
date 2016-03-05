@@ -10,7 +10,7 @@
 <div id="container">
     <!-- header -->
     <header id="header">
-        <h1 id="title">Grep search</h1>
+`        <h1 id="title">Grep search</h1>
         <form id="searchbox" action="/search" method="post">
             <input id="query" name="query" type="search" placeholder="search">
             <button type="submit">Submit</button>
@@ -18,19 +18,17 @@
     </header>
     <!-- Main Content area -->
     <section id="content">
-        ${maker}
+
         <#if solrDocuments??>
+        <h1> solr document count is ${numFound}</h1>
         <ul>
         <#list solrDocuments as docs>
         <section id="result">
             <li>
 
             <#if docs["body_txt"]??>
-
-
             <#if docs["body_txt"]?is_enumerable> ${docs["body_txt"][0]} <#else>${docs["body_txt"]} </#if>
             </#if>
-                <br>
             </if>
             </li>
 
